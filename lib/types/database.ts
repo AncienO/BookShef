@@ -81,6 +81,57 @@ export type Database = {
         };
         Relationships: [];
       };
+      toolkits: {
+        Row: {
+          id: string;
+          user_id: string;
+          name: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          name: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          name?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+      toolkit_tools: {
+        Row: {
+          toolkit_id: string;
+          tool_id: string;
+        };
+        Insert: {
+          toolkit_id: string;
+          tool_id: string;
+        };
+        Update: {
+          toolkit_id?: string;
+          tool_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "toolkit_tools_toolkit_id_fkey";
+            columns: ["toolkit_id"];
+            isOneToOne: false;
+            referencedRelation: "toolkits";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "toolkit_tools_tool_id_fkey";
+            columns: ["tool_id"];
+            isOneToOne: false;
+            referencedRelation: "tools";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
     };
     Views: { [_ in never]: never };
     Functions: { [_ in never]: never };
@@ -91,7 +142,12 @@ export type Database = {
 
 export type Tool = Database["public"]["Tables"]["tools"]["Row"];
 export type ToolInsert = Database["public"]["Tables"]["tools"]["Insert"];
+export type ToolUpdate = Database["public"]["Tables"]["tools"]["Update"];
 export type Category = Database["public"]["Tables"]["categories"]["Row"];
 export type CategoryInsert = Database["public"]["Tables"]["categories"]["Insert"];
 export type ToolCategory = Database["public"]["Tables"]["tool_categories"]["Row"];
+export type Toolkit = Database["public"]["Tables"]["toolkits"]["Row"];
+export type ToolkitInsert = Database["public"]["Tables"]["toolkits"]["Insert"];
+export type ToolkitUpdate = Database["public"]["Tables"]["toolkits"]["Update"];
+export type ToolkitTool = Database["public"]["Tables"]["toolkit_tools"]["Row"];
 

@@ -1,6 +1,6 @@
-# BookShef Setup Guide
+# BookChef Setup Guide
 
-This guide walks you through getting BookShef running locally.
+This guide walks you through getting BookChef running locally.
 
 ---
 

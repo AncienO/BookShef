@@ -1,4 +1,4 @@
--- BookShef Initial Schema
+-- BookChef Initial Schema
 -- Run this in the Supabase SQL Editor (supabase.com → your project → SQL editor)
 
 -- =========================================================

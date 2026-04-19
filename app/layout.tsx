@@ -6,12 +6,20 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "BookShef — Your AI Tool Toolkit",
+  title: "BookChef — Your AI tools. One place. Total clarity.",
   description:
-    "BookShef is a personal AI tool management platform. Build and organise your own toolkit of AI tools in one place.",
+    "BookChef is the smart toolkit manager for people who take AI seriously. Organise every tool, define every purpose, and never lose track again.",
+  keywords: ["AI tools", "toolkit manager", "AI productivity", "tool organiser", "bookchef"],
+  openGraph: {
+    title: "BookChef — Your AI tools. One place. Total clarity.",
+    description:
+      "BookChef is the smart toolkit manager for people who take AI seriously.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -21,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="antialiased bg-slate-950 text-white">{children}</body>
+      <body className="antialiased bg-[#0a0a0a] text-white">{children}</body>
     </html>
   );
 }

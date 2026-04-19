@@ -3,9 +3,9 @@
 import { useTransition, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { signIn, signInWithGoogle } from "../actions";
+import { signUp, signInWithGoogle } from "../actions";
 
-export default function LoginPage() {
+export default function SignupPage() {
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -16,7 +16,7 @@ export default function LoginPage() {
     const formData = new FormData(event.currentTarget);
 
     startTransition(async () => {
-      const result = await signIn(formData);
+      const result = await signUp(formData);
       if (result?.error) {
         setError(result.error);
       } else if (result?.success) {
@@ -52,8 +52,8 @@ export default function LoginPage() {
         </Link>
 
         {/* Headline */}
-        <h1 className="text-2xl font-bold text-white mb-2">Welcome back</h1>
-        <p className="text-white/40 text-sm mb-8 font-light">Log in to manage your AI toolkit.</p>
+        <h1 className="text-2xl font-bold text-white mb-2">Create your account</h1>
+        <p className="text-white/40 text-sm mb-8 font-light">Start organising your AI toolkit for free.</p>
 
         {/* Google OAuth */}
         <button
@@ -96,6 +96,19 @@ export default function LoginPage() {
         {/* Email / Password form */}
         <form onSubmit={handleSubmit} className="text-left space-y-4">
           <div>
+            <label htmlFor="name" className="sr-only">
+              Name
+            </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autoComplete="name"
+              placeholder="Your Name (Optional)"
+              className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition-colors"
+            />
+          </div>
+          <div>
             <label htmlFor="email" className="sr-only">
               Email
             </label>
@@ -118,41 +131,34 @@ export default function LoginPage() {
               name="password"
               type="password"
               required
-              autoComplete="current-password"
+              autoComplete="new-password"
               placeholder="Password"
               className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition-colors"
             />
           </div>
 
-          <div className="flex justify-end pt-1">
-            <Link
-              href="/forgot-password"
-              className="text-xs text-indigo-400 hover:text-indigo-300 transition-colors"
+          <div className="pt-2">
+            {error && (
+              <div className="text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3 mb-4">
+                {error}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={isPending}
+              className="w-full py-3.5 px-4 rounded-xl bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98]"
             >
-              Forgot password?
-            </Link>
+              {isPending ? "Creating account..." : "Sign Up"}
+            </button>
           </div>
-
-          {error && (
-            <div className="text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
-              {error}
-            </div>
-          )}
-
-          <button
-            type="submit"
-            disabled={isPending}
-            className="w-full py-3.5 px-4 rounded-xl bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98]"
-          >
-            {isPending ? "Signing in..." : "Sign In"}
-          </button>
         </form>
 
         {/* Footer Link */}
         <p className="mt-8 text-white/40 text-sm font-light">
-          Don&apos;t have an account?{" "}
-          <Link href="/signup" className="text-white hover:text-indigo-400 transition-colors font-medium">
-            Sign Up
+          Already have an account?{" "}
+          <Link href="/login" className="text-white hover:text-indigo-400 transition-colors font-medium">
+            Sign In
           </Link>
         </p>
       </div>
