@@ -5,7 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navItems = [
-  { href: "/dashboard", label: "My Tools", exact: true },
+  { href: "/dashboard/home", label: "Home", exact: false },
+  { href: "/dashboard/tools", label: "My Tools", exact: true },
   { href: "/dashboard/toolkits", label: "My Toolkits", exact: false },
   { href: "/dashboard/tools/new", label: "Add Tool", exact: true },
 ];

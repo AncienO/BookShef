@@ -5,7 +5,18 @@ import { usePathname } from "next/navigation";
 
 const navItems = [
   {
-    href: "/dashboard",
+    href: "/dashboard/home",
+    label: "Home",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+        <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.99 8.99a.75.75 0 1 1-1.06 1.06L20 13.439V20.25A1.75 1.75 0 0 1 18.25 22h-3.5a.75.75 0 0 1-.75-.75v-4.5a.25.25 0 0 0-.25-.25h-3.5a.25.25 0 0 0-.25.25v4.5c0 .414-.336.75-.75.75h-3.5A1.75 1.75 0 0 1 4 20.25v-6.811l-.45.45a.75.75 0 1 1-1.06-1.06l8.98-8.989ZM18.5 11.939l-6.5-6.5-6.5 6.5V20.25c0 .138.112.25.25.25h3.5v-4.5a1.75 1.75 0 0 1 1.75-1.75h3.5a1.75 1.75 0 0 1 1.75 1.75v4.5h3.5a.25.25 0 0 0 .25-.25v-8.311Z" />
+        <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.99 8.99a.75.75 0 1 1-1.06 1.06L20 13.439V20.25A1.75 1.75 0 0 1 18.25 22h-3.5a.75.75 0 0 1-.75-.75v-4.5a.25.25 0 0 0-.25-.25h-3.5a.25.25 0 0 0-.25.25v4.5c0 .414-.336.75-.75.75h-3.5A1.75 1.75 0 0 1 4 20.25v-6.811l-.45.45a.75.75 0 1 1-1.06-1.06l8.98-8.989Z" vectorEffect="non-scaling-stroke" />
+      </svg>
+    ),
+    exact: false,
+  },
+  {
+    href: "/dashboard/tools",
     label: "My Tools",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
